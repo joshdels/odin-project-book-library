@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Odin Book Library</title>
+  </head>
+  <body>
+    <div>
+      <h1>Book Library</h1>
+      <button command="show-modal" commandfor="my-dialog">Add Book</button>
+    </div>
+
+    <dialog id="my-dialog">
+      <button commandfor="my-dialog" command="close">close</button>
+      <form id="my-form">
+        <label for="name">name</label>
+        <input type="text" id="name" name="name">
+        <label for="author">author</label>
+        <input type="author" id="author" name="author">
+        <label for="pages">number of pages</label>
+        <input type="number" id="pages" name="pages">
+        <label for="isRead">read?</label>
+        <input type="checkbox" id="read" name="read">
+        <button type="submit">submit</button>
+      </form>
+    </dialog>
+  </body>
+  <script src="index.js"></script>
+</html>
