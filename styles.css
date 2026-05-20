@@ -1,0 +1,54 @@
+body,
+html {
+  padding: 0;
+  margin: 0;
+}
+
+.header {
+  padding: 1rem;
+  background-color: antiquewhite;
+  border: 1px solid black;
+}
+
+.header button {
+  width: 200px;
+  height: 30px;
+  font-size: 1rem;
+}
+
+.header p {
+  opacity: 0.7;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  background-color: antiquewhite;
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+.books-contents {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 1rem;
+}
+
+dialog {
+  padding: 2rem;
+  text-transform: capitalize;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  text-transform: capitalize;
+}
+
+.close-dialog {
+  width: 80px;
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+}

@@ -4,24 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Odin Book Library</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div>
+    <div class="header">
       <h1>Book Library</h1>
+      <p>Welcome to the books of library!</p>
       <button command="show-modal" commandfor="my-dialog">Add Book</button>
     </div>
 
+    <div class="books-contents"></div>
+
     <dialog id="my-dialog">
-      <button commandfor="my-dialog" command="close">close</button>
+      <button commandfor="my-dialog" command="close" class="close-dialog">close</button>
       <form id="my-form">
         <label for="name">name</label>
-        <input type="text" id="name" name="name">
+        <input type="text" id="name" name="name" />
         <label for="author">author</label>
-        <input type="author" id="author" name="author">
+        <input type="author" id="author" name="author" />
         <label for="pages">number of pages</label>
-        <input type="number" id="pages" name="pages">
-        <label for="isRead">read?</label>
-        <input type="checkbox" id="read" name="read">
+        <input type="number" id="numPages" name="numPages" />
+        <div>
+          <label for="isRead">read?</label>
+          <input type="checkbox" id="isRead" name="isRead" />
+        </div>
         <button type="submit">submit</button>
       </form>
     </dialog>

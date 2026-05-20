@@ -1,17 +1,57 @@
 const myLibrary = [];
 
-function Book(name, author, numPages) {
+function Book(name, author, numPages, isRead) {
   this.id = crypto.randomUUID();
   this.name = name;
   this.author = author;
   this.numPages = numPages;
-  this.isRead = false;
+  this.isRead = isRead;
 }
 
 function addBookToLibrary(name, author, numPages, isRead) {
   const newBook = new Book(name, author, numPages, isRead);
   myLibrary.push(newBook);
-  console.log(myLibrary);
+  renderBookCard(newBook);
+}
+
+const books = document.querySelector(".books-contents");
+
+function renderBookCard(book) {
+  const newDiv = document.createElement("div");
+  newDiv.classList.add("book-card");
+
+  newDiv.innerHTML = `
+      <h1>${book["name"]}</h1>
+      <h3>Author: ${book["author"]}</h3>
+      <span>Number of Pages: ${book["numPages"]}</span>
+      <div>
+        <label>Read</label>
+        <input type="checkbox" ${book.isRead ? "checked" : ""}>
+      </div>
+      <button id=${book.id}>Delete</button>
+      `;
+
+  const deleteBtn = newDiv.querySelector("button");
+
+  deleteBtn.addEventListener("click", function (e) {
+    const removeId = e.target.id;
+
+    const updatedLibrary = myLibrary.filter((book) => book.id !== removeId);
+
+    myLibrary.length = 0;
+    myLibrary.push(...updatedLibrary);
+
+    delete myLibrary[removeId];
+    newDiv.remove();
+  });
+
+  const checkbox = newDiv.querySelector("input");
+
+  checkbox.addEventListener("change", function () {
+    book.toggleRead();
+  });
+
+  books.append(newDiv);
 }
 
 const form = document.getElementById("my-form");
@@ -30,5 +70,8 @@ form.addEventListener("submit", function (e) {
   form.reset();
 });
 
-// Show to public the book data after adding
 // add remove using prototype?
+// Prototypes add new properties and the a function
+Book.prototype.toggleRead = function () {
+  this.isRead = !this.isRead;
+};
