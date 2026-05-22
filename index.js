@@ -1,11 +1,18 @@
 const myLibrary = [];
 
-function Book(name, author, numPages, isRead) {
-  this.id = crypto.randomUUID();
-  this.name = name;
-  this.author = author;
-  this.numPages = numPages;
-  this.isRead = isRead;
+
+
+class Book {
+  constructor(name, author, numPages, isRead) {
+    this.id = crypto.randomUUID();
+    this.name = name;
+    this.author = author;
+    this.numPages = numPages;
+    this.isRead = isRead;
+  }
+  toggleRead() {
+    this.isRead = !this.isRead();
+  }
 }
 
 function addBookToLibrary(name, author, numPages, isRead) {
@@ -21,9 +28,9 @@ function renderBookCard(book) {
   newDiv.classList.add("book-card");
 
   newDiv.innerHTML = `
-      <h1>${book["name"]}</h1>
-      <h3>Author: ${book["author"]}</h3>
-      <span>Number of Pages: ${book["numPages"]}</span>
+      <h1>${book.name}</h1>
+      <h3>Author: ${book.author}</h3>
+      <span>Number of Pages: ${book.numPages}</span>
       <div>
         <label>Read</label>
         <input type="checkbox" ${book.isRead ? "checked" : ""}>
@@ -69,9 +76,3 @@ form.addEventListener("submit", function (e) {
   );
   form.reset();
 });
-
-// add remove using prototype?
-// Prototypes add new properties and the a function
-Book.prototype.toggleRead = function () {
-  this.isRead = !this.isRead;
-};
